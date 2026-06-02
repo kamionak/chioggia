@@ -50,7 +50,7 @@ nav a {
 }
 
 .hero {
-    background: url('img/chioggia-hero.jpg') center/cover no-repeat;
+    background: url('img/chioggia-hero.webp') center/cover no-repeat;
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -79,6 +79,19 @@ h1, h2 {
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 280px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
 }
 
 /* Lightbox */
