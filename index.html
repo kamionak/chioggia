@@ -1,124 +1,1034 @@
+
+All projects
+web Chioggia
+
+
+
+How can I help you today?
+
+
+Vylepšení webu
+Last message 3 minutes ago
+Instructions
+vytvářím web o městě chioggia a chci přesvědčit argumenty svoji přítelkyni Kláru, aby tam se mnou jela na výlet mám založený projekt na githubu https://kamionak.github.io/chioggia/
+
+Files
+
+index.html
+1,000 lines
+
+html
+
+
+
+index.html
+903 lines
+
+html
+
+
+File added to project
+index.html
+28.13 KB •1,000 lines
+•
+Formatting may be inconsistent from source
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chioggia – Turistický průvodce</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chioggia – Benátky v malém</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --sand: #f5ede0;
+    --sand-dark: #e8d8c0;
+    --terracotta: #c0573a;
+    --terracotta-light: #d9714f;
+    --ocean: #1a4f6e;
+    --ocean-light: #2a6f96;
+    --gold: #c9953a;
+    --cream: #fdf8f2;
+    --dark: #1c1c1c;
+    --text: #2d2d2d;
+    --muted: #6b6b6b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(28,28,28,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-brand span { color: var(--gold); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--terracotta);
+    color: #fff !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--terracotta-light) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://kamionak.github.io/chioggia/img/chioggia-hero.webp') center/cover no-repeat;
+    transform: scale(1.05);
+    transition: transform 8s ease-out;
+  }
+
+  #hero:hover .hero-bg { transform: scale(1); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,30,50,0.72) 0%, rgba(10,30,50,0.35) 60%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    padding: 0 2.5rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.25rem;
+  }
+
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+  }
+
+  .hero-content h1 em {
+    display: block;
+    font-style: italic;
+    color: var(--sand);
+    font-weight: 400;
+  }
+
+  .hero-content p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+    max-width: 500px;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--terracotta-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    margin-left: 1rem;
+  }
+
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--ocean);
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+  }
+
+  .stat {
+    padding: 1.8rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ocean);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── INTRO ── */
+  #intro {
+    background: var(--cream);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .intro-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .intro-image {
+    position: relative;
+  }
+
+  .intro-image img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+
+  .intro-image::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    right: 16px;
+    bottom: 16px;
+    border: 2px solid var(--gold);
+    z-index: 0;
+  }
+
+  .intro-image img { position: relative; z-index: 1; }
+
+  .quote-box {
+    background: var(--ocean);
+    color: #fff;
+    padding: 2rem 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .quote-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: rgba(255,255,255,0.1);
+    position: absolute;
+    top: -1rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .quote-box p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9) !important;
+    margin: 0;
+  }
+
+  .quote-box cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── SIGHTS ── */
+  #sights {
+    background: var(--sand);
+  }
+
+  .sights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .sights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .sight-card {
+    background: var(--cream);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .sight-card:hover { transform: translateY(-4px); }
+
+  .sight-card img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .sight-card:hover img { transform: scale(1.04); }
+
+  .sight-card-body {
+    padding: 1.4rem;
+  }
+
+  .sight-card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--ocean);
+    margin-bottom: 0.5rem;
+  }
+
+  .sight-card-body p {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .sight-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid var(--terracotta);
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── CHURCHES ── */
+  #churches { background: var(--cream); }
+
+  .churches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .church-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--sand);
+    border-left: 3px solid var(--gold);
+    transition: transform 0.2s;
+  }
+
+  .church-card:hover { transform: translateY(-3px); }
+
+  .church-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+
+  .church-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--ocean);
+    margin-bottom: 0.2rem;
+  }
+
+  .church-card .church-subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .church-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .church-fact {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.78rem;
+    background: var(--ocean);
+    color: rgba(255,255,255,0.9);
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .churches-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── BEACH ── */
+  #beach {
+    background: var(--ocean);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #beach::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://kamionak.github.io/chioggia/img/chioggia-sottomarina-beach.webp') center/cover no-repeat;
+    opacity: 0.18;
+  }
+
+  #beach .container { position: relative; z-index: 1; }
+
+  #beach h2 { color: #fff; }
+
+  #beach .section-label { color: var(--gold); }
+
+  .beach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .beach-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .beach-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .beach-feature h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .beach-feature p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .beach-image-wrap {
+    position: relative;
+  }
+
+  .beach-image-wrap img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  /* ── FOOD ── */
+  #food { background: var(--cream); }
+
+  .food-intro {
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  .food-intro p { color: var(--muted); font-size: 1.05rem; }
+
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--sand-dark);
+    border: 1px solid var(--sand-dark);
+  }
+
+  .food-item {
+    background: var(--cream);
+    padding: 1.8rem;
+    transition: background 0.2s;
+  }
+
+  .food-item:hover { background: var(--sand); }
+
+  .food-emoji {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .food-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--ocean);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .food-item p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--dark); padding: 5rem 0 0; }
+
+  #gallery .section-label { color: var(--gold); }
+  #gallery h2 { color: #fff; }
+
+  .gallery-sub {
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 4px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s, filter 0.3s;
+    filter: saturate(0.85);
+  }
+
+  .gallery-item:first-child img { min-height: 480px; }
+  .gallery-item:not(:first-child) img { min-height: 232px; }
+
+  .gallery-item:hover img { transform: scale(1.06); filter: saturate(1.1); }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--terracotta);
+    padding: 5rem 0;
+    text-align: center;
+    color: #fff;
+  }
+
+  #cta h2 {
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  #cta p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-white {
+    background: #fff;
+    color: var(--terracotta);
+  }
+
+  .btn-white:hover { background: var(--sand); }
+
+  .btn-white-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+
+  .btn-white-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 2.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .intro-grid, .beach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .sights-grid, .food-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: 1 / -1; grid-row: auto; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  }
+</style>
+</head>
 <body>
 
-<header>
-    <nav>
-        <div class="logo">Chioggia</div>
-        <div class="menu-toggle">☰</div>
-        <ul class="menu">
-            <li><a href="#home">Domů</a></li>
-            <li><a href="#sights">Co vidět</a></li>
-            <li><a href="#beach">Pláže</a></li>
-            <li><a href="#food">Jídlo</a></li>
-            <li><a href="#stay">Ubytování</a></li>
-            <li><a href="#gallery">Fotogalerie</a></li>
-            <li><a href="#map">Mapa</a></li>
-            <li><a href="#events">Události</a></li>
-            <li><a href="#contact">Kontakty</a></li>
-        </ul>
-    </nav>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Chioggia <span>✦</span> La Piccola Venezia</div>
+  <ul>
+    <li><a href="#intro">O městě</a></li>
+    <li><a href="#sights">Co vidět</a></li>
+    <li><a href="#churches">Kostely</a></li>
+    <li><a href="#beach">Pláže</a></li>
+    <li><a href="#food">Jídlo</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#cta" class="nav-cta">Naplánuj výlet</a></li>
+  </ul>
+</nav>
 
-<section id="home" class="hero">
-    <h1>Chioggia – Benátky v malém</h1>
-    <p>Objevte kouzlo laguny, historické kanály a dlouhé písečné pláže.</p>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Severní Itálie · Benátská laguna</span>
+    <h1>Chioggia <em>– Benátky v malém</em></h1>
+    <p>Historické kanály, čerstvé mořské plody, zlatavé písčité pláže a pravé italské tempo. Bez davů turistů z Benátek.</p>
+    <a href="#intro" class="btn btn-primary">Prozkoumat město</a>
+    <a href="#cta" class="btn btn-outline">Naplánuj cestu</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
 </section>
 
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-number">1.500</span>
+    <span class="stat-label">let historie</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">10 km</span>
+    <span class="stat-label">písčitá pláž</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">~50 €</span>
+    <span class="stat-label">ubytování/noc</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">30 min</span>
+    <span class="stat-label">od Benátek</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p class="section-label">Proč právě Chioggia?</p>
+        <h2>Autentická Itálie, kterou turisté minují</h2>
+        <p>Chioggia leží na ostrově v Benátské laguně – stejně jako Benátky, ale bez zástupů návštěvníků, přemrštěných cen a kýče. Místní tu žijí svůj každodenní život: rybáři vyrážejí za úsvitu, trhy voní čerstvými rybami a děti hrají fotbal na náměstích dlážděných kamenem.</p>
+        <p>Corso del Popolo – hlavní bulvár – je lemován pastelovými fasádami a kavárnami, kde espresso stojí euro a nikdo tě nespěchá. Kanál Vena přetínaný mosty ti připomene, že jsi přece jen ve světě benátské architektury.</p>
+        <p>Historie města sahá až do starověku – první osídlení tu vzniklo v době Římanů, kteří sem přišli pro bohatství laguny. Ve středověku byl ostrov pevností chránící přístupy do Benátek. Roku 1379 se tu odehrála slavná <em>Bitva u Chioggie</em> – klíčový střet, v němž Benátčané porazili Janov a upevnili svoji nadvládu nad Adriatikem. Celou tuto historii dnes cítíš na každém kroku – v kamenném dláždění, gotických římsách i zvuku zvonů nad kanálem.</p>
+        <div class="quote-box">
+          <p>Chtěla jsem Benátky, ale bez Benátek. Chioggia mi dala přesně to – a k tomu nejlepší rizoto v životě.</p>
+          <cite>— Martina, Praha · výlet 2024</cite>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-canal-vena.webp" alt="Kanál Vena, Chioggia" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGHTS -->
 <section id="sights">
-    <h2>Co vidět</h2>
-    <ul>
-        <li>Corso del Popolo</li>
-        <li>Most Vigo</li>
-        <li>Kanál Vena</li>
-        <li>Rybí trh (Mercato Ittico)</li>
-        <li>Katedrála Santa Maria Assunta</li>
-        <li>Muzeum Laguna Sud</li>
-    </ul>
+  <div class="container">
+    <div class="sights-header">
+      <div>
+        <p class="section-label">Památky a zážitky</p>
+        <h2>Co v Chioggie nesmíš minout</h2>
+      </div>
+    </div>
+    <div class="sights-grid">
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-canal-vena.webp" alt="Kanál Vena" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Architektura</span>
+          <h3>Kanál Vena & mosty</h3>
+          <p>Srdce města. Pastelové domy se odrážejí ve vodě a gondoly tu nahradily místní rybářské lodě. Nejkrásnější za zlaté hodiny.</p>
+        </div>
+      </div>
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-fish-market.webp" alt="Rybí trh" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Gastro</span>
+          <h3>Rybí trh – Mercato Ittico</h3>
+          <p>Největší rybí trh v Itálii. Ráno tu místní nakupují čerstvě vylovené mořské plody. Atmosféra a vůně jako v jiném světě.</p>
+        </div>
+      </div>
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-vigo-bridge.webp" alt="Most Vigo" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Výhled</span>
+          <h3>Most Vigo & Corso del Popolo</h3>
+          <p>Ikonický most s výhledem na lagunu a hlavní bulvár plný kaváren a obchodů. Ideální na večerní passeggiata.</p>
+        </div>
+      </div>
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-old-town.webp" alt="Katedrála" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Historie</span>
+          <h3>Katedrála Santa Maria Assunta</h3>
+          <p>Barokní katedrála z 18. století se skvostnými freskami. Uvnitř je překvapivě chladná i v horkém létě.</p>
+        </div>
+      </div>
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-panorama.webp" alt="Laguna" onerror="this.src='https://kamionak.github.io/chioggia/img/chioggia-hero.webp'" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Příroda</span>
+          <h3>Laguna Sud – výlety lodí</h3>
+          <p>Plavba po laguně k ostrovům, chovům ústřic a rybářským chatám. Místní průvodci ti ukáží Chioggu z jiného úhlu.</p>
+        </div>
+      </div>
+      <div class="sight-card">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-sottomarina-beach.webp" alt="Sottomarina" loading="lazy">
+        <div class="sight-card-body">
+          <span class="sight-tag">Relax</span>
+          <h3>Podvečer na Corso</h3>
+          <p>Gelato v ruce, lavička u kanálu, západ slunce nad lagunou. Jednoduché, ale nezapomenutelné. Přesně to, proč jezdit do Itálie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- CHURCHES -->
+<section id="churches">
+  <div class="container">
+    <p class="section-label">Duchovní dědictví</p>
+    <h2>Kostely plné historie</h2>
+    <p style="color:var(--muted); max-width:640px; font-size:1.05rem;">Ve městě se nachází celá řada kostelů, z nichž každý vypráví jiný příběh – od raného středověku přes gotiku až po barok. Jsou to tiché oázy uprostřed rybářského ruchu.</p>
+    <div class="churches-grid">
+      <div class="church-card">
+        <div class="church-icon">⛪</div>
+        <div>
+          <h3>Kostel sv. Ondřeje</h3>
+          <div class="church-subtitle">Chiesa di Sant'Andrea · počátek 18. stol.</div>
+          <p>Vedle kostela stojí impozantní Torre dell'Orologio – věž pocházející z 9. až 10. století, která v minulosti sloužila k obraně města. Dnes je proslulá tím, že ukrývá <em>nejstarší věžní hodiny na světě</em>, zkonstruované Giovannim Dondim dell'Orologio.</p>
+          <span class="church-fact">⏰ Nejstarší věžní hodiny světa</span>
+        </div>
+      </div>
+      <div class="church-card">
+        <div class="church-icon">⛪</div>
+        <div>
+          <h3>Kostel sv. Dominika</h3>
+          <div class="church-subtitle">Chiesa di San Domenico · od roku 1278</div>
+          <p>Stojí na malém ostrůvku dostupném po mostě, přesně uprostřed mezi Chioggiou a Sottomarinou. Původně benediktýnský ostrov, od roku 1200 sídlo Řádu bratří kazatelů, kteří tu v roce 1278 postavili klášter a kostel. Dnešní barokní podoba pochází z roku 1745. Kostel je poutním místem pro svůj zázračný impozantní kříž.</p>
+          <span class="church-fact">✝ Poutní místo · zázračný kříž</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEACH -->
 <section id="beach">
-    <h2>Pláže – Sottomarina</h2>
-    <p>Dlouhá písečná pláž, bary, sport a rodinná atmosféra.</p>
+  <div class="container">
+    <p class="section-label">Sottomarina</p>
+    <h2>10 kilometrů zlatého písku</h2>
+    <div class="beach-grid">
+      <div>
+        <p style="color:rgba(255,255,255,0.75); margin-bottom:2.5rem; font-size:1.05rem;">Hned za mostem z Chioggie začíná Sottomarina – jeden z nejdelších písčitých plážových pruhů celého Jadranu. Moře tu je mělké, teplé a klidné. Ideální pro plavání i lenošení.</p>
+        <div class="beach-feature">
+          <div class="beach-icon">☀</div>
+          <div>
+            <h4>Krásné počasí</h4>
+            <p>Od května do září stabilně přes 28 °C. Červen a září jsou ideální – bez červencových davů.</p>
+          </div>
+        </div>
+        <div class="beach-feature">
+          <div class="beach-icon">🐚</div>
+          <div>
+            <h4>Čisté Jaderské moře</h4>
+            <p>Mělká voda, jemný písek, bez kamínků. Ideální pro děti i neplavce.</p>
+          </div>
+        </div>
+        <div class="beach-feature">
+          <div class="beach-icon">🍹</div>
+          <div>
+            <h4>Bary přímo na pláži</h4>
+            <p>Spritz, Aperol a čerstvé granité na každém kroku. Bez přemrštěných turistických cen.</p>
+          </div>
+        </div>
+        <div class="beach-feature">
+          <div class="beach-icon">🚲</div>
+          <div>
+            <h4>Pronájem kol</h4>
+            <p>Podél celé pláže vede cyklostezka. Na kole z Chioggie na Sottomarina za 10 minut.</p>
+          </div>
+        </div>
+      </div>
+      <div class="beach-image-wrap">
+        <img src="https://kamionak.github.io/chioggia/img/chioggia-sottomarina-beach.webp" alt="Pláž Sottomarina" loading="lazy">
+      </div>
+    </div>
+  </div>
 </section>
 
-
-<section id="gourmet">
-    <h2>Pro gurmánky – místní speciality</h2>
-    <p>Chioggia je rájem pro milovníky čerstvých ryb, mořských plodů a tradičních benátských receptů. Místní kuchyně je jednoduchá, poctivá a založená na čerstvosti surovin z laguny.</p>
-
-    <ul class="specialties">
-        <li><strong>Sarde in saor</strong> – sladkokyselé sardinky s cibulí, rozinkami a piniovými oříšky.</li>
-        <li><strong>Moeche</strong> – malé měkké kraby, místní sezónní delikatesa.</li>
-        <li><strong>Risotto di Go</strong> – krémové rizoto z ryby „ghiozzo“ typické pro lagunu.</li>
-        <li><strong>Fritto misto</strong> – mix smažených ryb a mořských plodů, ideální k vínu.</li>
-        <li><strong>Seppie al nero</strong> – sépie na černo s omáčkou z vlastního inkoustu.</li>
-        <li><strong>Vongole veraci</strong> – čerstvé škeble z laguny, často podávané s těstovinami.</li>
-    </ul>
+<!-- FOOD -->
+<section id="food">
+  <div class="container">
+    <p class="section-label">Gastro</p>
+    <h2>Řekni si o stůl u kanálu</h2>
+    <div class="food-intro">
+      <p>Chioggia žije z moře. Rybáři vyrážejí každou noc a ráno přivážejí úlov přímo na trh. Místní kuchyně je jednoduchá, čerstvá a naprosto neodolatelná. Tady se jí dobře a levně.</p>
+    </div>
+    <div class="food-grid">
+      <div class="food-item">
+        <span class="food-emoji">🐟</span>
+        <h3>Sarde in saor</h3>
+        <p>Sladkokyselé sardinky s cibulí, rozinkami a piniovými oříšky. Recept starý stovky let – a pořád geniální.</p>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🦀</span>
+        <h3>Moeche</h3>
+        <p>Místní delikatesa – měkké kraby smažené zaživa. Dostupné jen v sezóně (jaro/podzim). Vzácné a neodolatelné.</p>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍚</span>
+        <h3>Risotto di Go</h3>
+        <p>Krémové rizoto z ryby ghiozzo typické pro lagunu. Jídlo, které jinde nenajdeš. Silně doporučujeme.</p>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍤</span>
+        <h3>Fritto misto</h3>
+        <p>Mix smažených ryb a mořských plodů. K tomu sklenička prosecca a výhled na kanál – perfektní oběd.</p>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🦑</span>
+        <h3>Seppie al nero</h3>
+        <p>Sépie na černo v omáčce z vlastního inkoustu, podávané s bílou polentou. Temná barva, intenzivní chuť.</p>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🐚</span>
+        <h3>Vongole veraci</h3>
+        <p>Čerstvé škeble přímo z laguny, s těstovinami nebo jen tak s trochou olivového oleje a česneku.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="stay">
-    <h2>Doporučené ubytování</h2>
-    <h3>Barbara’s Rooms</h3>
-    <p>Moderní a velmi dobře hodnocené ubytování v centru Chioggie.</p>
-    <a class="btn" href="https://www.booking.com/hotel/it/barbaras-rooms.cs.html" target="_blank">Zobrazit na Booking.com</a>
-</section>
-
+<!-- GALLERY -->
 <section id="gallery">
-    <h2>Fotogalerie</h2>
-    <div class="gallery">
-
-        <img src="img/chioggia-hero.webp" alt="Chioggia panorama" onclick="openLightbox(this.src)">
-        <img src="img/chioggia-canal-vena.webp" alt="Kanál Vena" onclick="openLightbox(this.src)">
-        <img src="img/chioggia-vigo-bridge.webp" alt="Most Vigo" onclick="openLightbox(this.src)">
-        <img src="img/chioggia-fish-market.webp" alt="Rybí trh" onclick="openLightbox(this.src)">
-        <img src="img/chioggia-sottomarina-beach.webp" alt="Pláž Sottomarina" onclick="openLightbox(this.src)">
-        <img src="img/chioggia-old-town.webp" alt="Staré město" onclick="openLightbox(this.src)">
-
+  <div class="container">
+    <p class="section-label">Fotogalerie</p>
+    <h2>Podívej se na vlastní oči</h2>
+    <p class="gallery-sub">Chioggia ve fotografiích – protože slova nestačí.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-hero.webp" alt="Chioggia panorama" loading="lazy">
     </div>
-</section>
-
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="">
-</div>
-
-
-<section id="map">
-    <h2>Mapa Chioggie</h2>
-    <div class="map-container">
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:8px;">
-  <iframe 
-    src="https://maps.google.com/maps?q=Chioggia%2C%20Italy&t=m&z=13&ie=UTF8&iwloc=B&output=embed" 
-    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
-    allowfullscreen 
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-canal-vena.webp" alt="Kanál Vena" loading="lazy">
     </div>
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-vigo-bridge.webp" alt="Most Vigo" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-fish-market.webp" alt="Rybí trh" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-sottomarina-beach.webp" alt="Pláž Sottomarina" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://kamionak.github.io/chioggia/img/chioggia-old-town.webp" alt="Kostel a staré město" loading="lazy">
+    </div>
+  </div>
 </section>
 
-<section id="events">
-    <h2>Události a trhy</h2>
-    <p>Rybí trh, čtvrteční trh a festival Palio della Marciliana.</p>
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <p class="section-label" style="color:rgba(255,255,255,0.6);">Čeká tě to nejlepší</p>
+    <h2>Pojď do Chioggie!</h2>
+    <p>Žádné fronty, žádné turistické pasti, žádné vyfouknuté ceny. Jen moře, kanály a skvělé jídlo. Chioggia je tajemstvím, které stojí za prozrazení.</p>
+    <div class="cta-buttons">
+      <a href="https://www.booking.com/hotel/it/barbaras-rooms.cs.html" target="_blank" class="btn btn-white">Najít ubytování</a>
+      <a href="https://maps.google.com/?q=Chioggia,Italy" target="_blank" class="btn btn-white-outline">Otevřít mapu</a>
+    </div>
+  </div>
 </section>
 
-<footer id="contact">
-    <h2>Kontakty</h2>
-    <p>Turistické informační centrum IAT Chioggia</p>
+<!-- FOOTER -->
+<footer>
+  <p>Web věnovaný Klářině přesvědčení &nbsp;·&nbsp; <a href="https://kamionak.github.io/chioggia/" target="_blank">kamionak.github.io/chioggia</a></p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
